@@ -1,0 +1,126 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{courier}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\titlePython Best Practices Cheat Sheet
+\authorJeff Krakenberg
+\dateApril 18, 2025
+
+\begin{document}
+
+\maketitle
+
+
+\section*1. Docstrings
+
+Use triple quotes to explain what a function, class, or script does.
+
+\begin{verbatim}
+def scan_ports(ip):
+    """Scan all TCP ports on a given IP and return open ports."""
+\end{verbatim}
+
+
+
+\section*2. Meaningful Names
+
+Avoid vague names like x, y, data. Be descriptive.
+
+\begin{verbatim}
+def get_user_credentials():
+    ...
+\end{verbatim}
+
+
+
+\section*3. Comments
+
+Explain why something is done, not what is obviously being done.
+
+\begin{verbatim}
+# Retry the request if it times out
+response = send_request(retry=True)
+\end{verbatim}
+
+
+
+\section*4. Formatting
+
+Follow PEP 8: 4 spaces per indent, and keep lines under 79 characters.
+
+Use auto-formatting tools like Black or autopep8.
+
+
+
+\section*5. Constants
+
+Use ALL_CAPS for values that shouldn't change.
+
+\begin{verbatim}
+MAX_ATTEMPTS = 5
+\end{verbatim}
+
+
+
+\section*6. Avoid Magic Numbers
+
+Give important numbers a name so the code is readable.
+
+\begin{verbatim}
+DEFAULT_TIMEOUT = 10
+\end{verbatim}
+
+
+
+\section*7. List Comprehensions
+
+Use list comprehensions for concise loops.
+
+\begin{verbatim}
+ports = [p for p in range(1024) if is_open(p)]
+\end{verbatim}
+
+
+
+\section*8. Use `with` for File Access
+
+Using `with` ensures the file is closed automatically.
+
+\begin{verbatim}
+with open("log.txt") as f:
+    data = f.read()
+\end{verbatim}
+
+
+
+\section*9. Try/Except for Error Handling
+
+Handle errors without crashing your script.
+
+\begin{verbatim}
+try:
+    connect_to_db()
+except ConnectionError:
+    print("DB unreachable.")
+\end{verbatim}
+
+
+
+\section*10. `if __name__ == '__main__'`
+
+Keeps your script modular and reusable.
+
+\begin{verbatim}
+def main():
+    run_scan()
+
+if __name__ == "__main__":
+    main()
+\end{verbatim}
+
+
+
+
+\end{document}

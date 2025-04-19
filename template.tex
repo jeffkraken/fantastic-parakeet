@@ -1,0 +1,21 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{courier}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{{ title }}
+\author{{ author }}
+\date{{ date }}
+
+\begin{document}
+
+\maketitle
+
+{% for section in sections %}
+\section*{{ section.title }}
+{{ section.body }}
+
+{% endfor %}
+
+\end{document}
